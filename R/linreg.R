@@ -10,6 +10,8 @@ qrX <- qr(X)                                  # QR-function in R.
 Coeff <- qr.coef(qrX, Y)                      # Coeffs of the linear model.
 Resid <- qr.resid(qrX, Y)                     # The residuals.
 
+Fitted <- qr.fitted(qrX, Y)                   # Fitted values.
+
 R <- qr.R(qrX)                                # The R-matrix, used below.
 
 XprimXt <- solve(R) %*% solve(t(R))           # Page 71, "Regression Diagnostics"
@@ -34,6 +36,7 @@ ptvalues <- (1 - pt(abs(tvalues), (n-p)))*2
 
 
 Coeff
+Fitted
 varbetahat
 tvalues
 ptvalues
