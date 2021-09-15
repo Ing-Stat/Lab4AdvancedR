@@ -1,3 +1,5 @@
+linreg <- function(){
+
 # Creates a X- and a Y-matrix
 
 X <- matrix(c(1, 1, 1, 1, 1, 9.3, 9.8, 7.7, 6.9, 7.3, 12.4, 18.8, 21.7, 22.9, 17.6, 18.7, 12.9, 14.5, 7.6, 5.8), ncol = 4, nrow = 5)
@@ -39,3 +41,5 @@ Fitted
 varbetahat
 tvalues
 ptvalues
+
+}

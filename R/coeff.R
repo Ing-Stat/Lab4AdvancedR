@@ -1,1 +1,3 @@
-Coeff
+coeff <- function(){
+  Coeff
+}

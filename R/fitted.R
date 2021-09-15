@@ -1,1 +1,3 @@
-Fitted
+hello <- function(){
+  Fitted
+}  
