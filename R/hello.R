@@ -9,5 +9,5 @@ hello <- function(){
   #' hello()
   #' @source \url{}
 
-  return("Behave yourself, Kristina!")
+  return("Behave yourself, Kristina (adv R-course)!")
 }
