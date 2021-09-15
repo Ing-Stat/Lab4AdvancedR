@@ -27,6 +27,16 @@ s2 <- t(Resid)%*%Resid/(n - p)                # Residual variance.
 
 s2value <- s2[1,1]                            # s2 as a scalar.
 
+# ------------------------------------------- Calculating st. residuals.
+# See 'Applied regression analysis', 2nd edition, page 144.
+
+nymatris <- X %*% XprimXt %*% t(X)
+rri <- diag(nymatris)
+
+stres <- Resid /sqrt((1 - rri)*s2value)       # Standardised residuals.
+# ---------------------------------------------------------------------
+
+
 covarBetahat <- s2value * XprimXt             # Var and covar matrix
 
 varbetahat <- diag(covarBetahat)              # var of beta-hats.
@@ -35,6 +45,8 @@ tvalues <- Coeff/sqrt(varbetahat)             # Calculating t-values.
 
 
 ptvalues <- (1 - pt(abs(tvalues), (n-p)))*2
+
+plot(Fitted, Resid)
 
 Coeff
 Fitted
