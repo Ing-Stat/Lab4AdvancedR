@@ -34,7 +34,6 @@ tvalues <- Coeff/sqrt(varbetahat)             # Calculating t-values.
 
 ptvalues <- (1 - pt(abs(tvalues), (n-p)))*2
 
-
 Coeff
 Fitted
 varbetahat
