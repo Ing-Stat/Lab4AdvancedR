@@ -33,7 +33,7 @@ s2value <- s2[1,1]                            # s2 as a scalar.
 nymatris <- X %*% XprimXt %*% t(X)
 rri <- diag(nymatris)
 
-stres <- Resid /sqrt((1 - rri)*s2value)       # Standardised residuals.
+Stdres <- Resid /sqrt((1 - rri)*s2value)       # Standardised residuals.
 # ---------------------------------------------------------------------
 
 
@@ -43,15 +43,16 @@ varbetahat <- diag(covarBetahat)              # var of beta-hats.
 
 tvalues <- Coeff/sqrt(varbetahat)             # Calculating t-values.
 
-
 ptvalues <- (1 - pt(abs(tvalues), (n-p)))*2
 
 #plot(Fitted, Resid, stres)
+#Coeff
+#Fitted
+#varbetahat
+#tvalues
+#linrptvalues
 
-Coeff
-Fitted
-varbetahat
-tvalues
-ptvalues
+retur <- list("Coeff" = Coeff, "Resid" = Resid, "Fitted" = Fitted, "Stdres" = Stdres, "s2" = s2, "tvalues" = tvalues, "pvalues" = ptvalues) 
+return(retur)
 
 }
