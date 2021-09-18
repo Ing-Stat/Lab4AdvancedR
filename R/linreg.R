@@ -52,7 +52,7 @@ ptvalues <- (1 - pt(abs(tvalues), (n-p)))*2
 #tvalues
 #linrptvalues
 
-retur <- list("Coeff" = Coeff, "Resid" = Resid, "Fitted" = Fitted, "Stdres" = Stdres, "s2" = s2, "tvalues" = tvalues, "pvalues" = ptvalues) 
+retur <- list("Coeff" = Coeff, "varB" = varbetahat, "Resid" = Resid, "Fitted" = Fitted, "Stdres" = Stdres, "s2" = s2, "tvalues" = tvalues, "pvalues" = ptvalues) 
 return(retur)
 
 }

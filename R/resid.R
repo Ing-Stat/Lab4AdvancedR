@@ -1,3 +1,4 @@
-resid <- function(){
-  Resid
+resid <- function(Resid) {
+
+  return (Resid)
 }
