@@ -16,7 +16,7 @@ linreg <- function(formula, data){
   #' @param p The number of columns in X
   #' @param s2 The residual variance
   #' @param s2value s2 as a scalar
-  #' @param nymatris X multiplied by regression diagnostics nultiplied by transposed X
+  #' @param nymatris X multiplied by regression diagnostics multiplied by transposed X
   #' @param rri Diagonalised nymatris
   #' @param Stdres Standardised residuals
   #' @param covarBetahat The variance and covariance matrix
@@ -32,7 +32,7 @@ linreg <- function(formula, data){
   
   # Creates a X- and a Y-matrix
   
-  X <- stats::model.matrix(formula, data)              # The matrix of linear equations with respect to dependent variables
+  X <- stats::model.matrix(formula, data)       # The matrix of linear equations with respect to dependent variables
   Y <- unlist(data[[all.vars(formula)[1]]])     # The vector of dependent variables
   
   qrX <- qr(X)                                  # QR-function in R.
@@ -45,7 +45,7 @@ linreg <- function(formula, data){
   # ------------------------------------------- Calculating a number of entities.
   # See 'Applied regression analysis', 2nd edition, page 144.
   
-  Hatmatrix <- X %*% XprimXtinv %*% t(X)           # The Hat-matrix Page 16 and 71, "Regression Diagnostics"
+  Hatmatrix <- X %*% XprimXtinv %*% t(X)        # The Hat-matrix Page 16 and 71, "Regression Diagnostics"
   
   Fitted <- Hatmatrix %*% Y
   Resid  <- Y - Fitted
@@ -58,6 +58,8 @@ linreg <- function(formula, data){
   n <- dimX[1]                                  # Dimensions of X.
   p <- dimX[2]
   
+  dof <- n - p                                  # degrees of freedom
+  
   s2 <- t(Resid)%*%Resid/(n - p)                # Residual variance. 
   
   s2value <- s2[1,1]                            # s2 as a scalar.
@@ -66,7 +68,7 @@ linreg <- function(formula, data){
   # ---------------------------------------------------------------------
   
   
-  covarBetahat <- s2value * XprimXt             # Var and covar matrix
+  covarBetahat <- s2value * XprimXtinv          # Var and covar matrix
   
   varbetahat <- diag(covarBetahat)              # var of beta-hats.
   
